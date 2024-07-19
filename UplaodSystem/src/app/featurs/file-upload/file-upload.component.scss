@@ -1,0 +1,129 @@
+/* file-upload.component.scss */
+.file-upload-container {
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+    max-width: 300px;
+    text-align: center;
+  
+    button {
+      margin-top: 10px;
+    }
+  
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    label.upload-icon {
+      display: inline-block;
+      padding: 10px 20px;
+    //   background-color: #007bff;
+    //   color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+  
+    .context-menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 10px;
+      display: none;
+  
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        li {
+          padding: 5px 0;
+  
+          a {
+            text-decoration: none;
+            color: #007bff;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  
+    .context-menu-visible {
+      display: block;
+    }
+  
+    .file-count-indicator {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .upload-message {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.circle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #cc6f5b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numerator {
+    position: absolute;
+    top: -10px; /* Adjust this value to position the numerator above the circle */
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 2px solid #cc6f5b;
+}
+
+.inner-circle {
+    width: 45px; /* slightly smaller to create a border effect */
+    height: 45px;
+    background-color: #E5ABB5; /* new inner color */
+    border-radius: 50%;
+}
+
+.context-menu {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
