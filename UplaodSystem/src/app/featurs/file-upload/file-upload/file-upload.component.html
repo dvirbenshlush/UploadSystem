@@ -1,6 +1,6 @@
 <div class="circle" (click)="toggleContextMenu()">
     <div class="inner-circle"></div>
-    <div class="numerator">1</div>
+    <div class="numerator">{{numberOfFiles}}</div>
 </div>
 @if(contextMenuVisible) {
     <div class="parent-container">
@@ -8,15 +8,14 @@
     </div>
 }
 <div class="file-upload-container">
+    @if(uploadMessage) {
+        <p>{{ uploadMessage }}</p>
+    }
     <input type="text" [(ngModel)]="fileName" placeholder="הכנס כותרת">
     <label for="file-upload" class="upload-icon">
       📤 העלה קובץ
       <input id="file-upload" type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" style="display: none;">
     </label>
     <button (click)="uploadFile()">שלח</button>
-    @if(uploadMessage) {
-        <p>{{ uploadMessage }}</p>
-    }
-    
   </div>
   

@@ -5,16 +5,17 @@ import { guid } from '@datorama/akita';
 import { tap } from 'rxjs/operators';
 import { FileUploadQuery } from './file-upload.query';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class FileUploadService {
-    private url = 'https://localhost:7125';
+    private url = environment.apiUrl;
 
   constructor(
     private fileUploadStore: FileUploadStore, 
     private fileUploadQuery: FileUploadQuery, 
     private http: HttpClient
-) {}
+    ) {}
 
   uploadFile(file: File, fileName: string): Observable<any> {
 

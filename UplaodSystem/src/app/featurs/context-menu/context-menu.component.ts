@@ -2,7 +2,6 @@ import { Component, input, signal } from '@angular/core';
 import { FileUploadQuery } from '../file-upload/store/file-upload.query';
 import { FileUploadService } from '../file-upload/store/file-upload.service';
 import { Observable } from 'rxjs';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'context-menu ',
@@ -20,7 +19,6 @@ export class ContextMenuComponent {
     this.uploadedFiles$ = this.fileUploadQuery.selectAll();
     this.uploadedFiles$.subscribe((files: File[])=> {
       this.filesArray.update(() => files);
-      console.log(this.filesArray());
     })
   }
   downloadFile(file: File): void {

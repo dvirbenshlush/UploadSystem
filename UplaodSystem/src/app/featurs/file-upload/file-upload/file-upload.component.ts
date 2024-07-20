@@ -19,6 +19,7 @@ export class FileUploadComponent {
   contextMenuVisible: boolean = false;
   uploadMessage: string = '';
   uploadedFiles: File[] = [];
+  numberOfFiles: number = 0;
   uploadedFiles$: Observable<any[]>;
   classList: string[] = ['file-upload', 'context-menu', 'inner-circle', 'file-name'];
 
@@ -48,6 +49,7 @@ export class FileUploadComponent {
     .subscribe(
       () => {
         this.uploadMessage = 'הקובץ הועלה בהצלחה';
+        this.numberOfFiles = this.uploadedFiles.length;
       },
       () => {
         this.uploadMessage = 'פעולת ההעלאת הקובץ נכשלה';
