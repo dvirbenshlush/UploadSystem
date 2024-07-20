@@ -1,17 +1,9 @@
-<!-- <div class="context-menu">
+<div class="context-menu">
     <ul>
-      @for (file of uploadedFiles(); track file.size){
-        <li>
-            <a (click)="downloadFile(file)">{{ file.name }} 📥</a>
+      @for (file of filesArray(); track file.size){
+        <li class="file-list">
+            <a class="file-name" (click)="downloadFile(file)">{{ file.name }} 📥</a>
         </li>
      }
     </ul>
   </div>
-   -->
-   <div class="context-menu">
-    <ul>
-        <li><a>📥 Option 1</a></li>
-        <li><a>📥 Option 2</a></li>
-        <li><a>📥 Option 3</a></li>
-    </ul>
-</div>

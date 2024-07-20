@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ContextMenuComponent } from '../context-menu/context-menu.component';
+import { ContextMenuComponent } from '../../context-menu/context-menu.component';
+import { Observable } from 'rxjs';
+import { FileUploadQuery } from '../store/file-upload.query';
+import { FileUploadService } from '../store/file-upload.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -16,10 +19,12 @@ export class FileUploadComponent {
   contextMenuVisible: boolean = false;
   uploadMessage: string = '';
   uploadedFiles: File[] = [];
+  uploadedFiles$: Observable<any[]>;
+  classList: string[] = ['file-upload', 'context-menu', 'inner-circle', 'file-name'];
 
-  constructor(
-    // private http: HttpClient
-  ) {}
+  constructor(private fileUploadService: FileUploadService, private fileUploadQuery: FileUploadQuery) {
+    this.uploadedFiles$ = this.fileUploadQuery.selectAll();
+  }
 
   toggleContextMenu() {
     this.contextMenuVisible = !this.contextMenuVisible;
@@ -39,14 +44,22 @@ export class FileUploadComponent {
     const formData = new FormData();
     formData.append('file', this.selectedFile, this.fileName || this.selectedFile.name);
     this.uploadedFiles.push(this.selectedFile!);
-    // this.http.post('/api/upload', formData).subscribe(
-    //   () => {
+    this.fileUploadService.uploadFile(this.selectedFile, this.fileName || this.selectedFile.name)
+    .subscribe(
+      () => {
         this.uploadMessage = 'הקובץ הועלה בהצלחה';
-        this.uploadedFiles.push(this.selectedFile!);
-    //   },
-    //   () => {
-    //     this.uploadMessage = 'פעולת ההעלאת הקובץ נכשלה';
-    //   }
-    // );
+      },
+      () => {
+        this.uploadMessage = 'פעולת ההעלאת הקובץ נכשלה';
+      }
+    );
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!this.classList.includes(target.className)) {
+      this.contextMenuVisible = false;
+    }
   }
 }

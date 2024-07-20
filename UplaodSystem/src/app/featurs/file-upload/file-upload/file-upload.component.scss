@@ -30,6 +30,10 @@
       margin-bottom: 10px;
     }
   
+    .parent-container {
+        display: inline-flex;
+        flex-direction: column !important
+    }
     .context-menu {
       position: absolute;
       top: 0;

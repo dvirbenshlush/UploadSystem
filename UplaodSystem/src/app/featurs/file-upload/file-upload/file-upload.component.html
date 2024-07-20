@@ -3,7 +3,9 @@
     <div class="numerator">1</div>
 </div>
 @if(contextMenuVisible) {
-    <context-menu></context-menu>
+    <div class="parent-container">
+        <context-menu></context-menu>
+    </div>
 }
 <div class="file-upload-container">
     <input type="text" [(ngModel)]="fileName" placeholder="הכנס כותרת">
@@ -15,5 +17,6 @@
     @if(uploadMessage) {
         <p>{{ uploadMessage }}</p>
     }
+    
   </div>
   

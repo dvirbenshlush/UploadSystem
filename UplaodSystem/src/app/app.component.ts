@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { FileUploadComponent } from './featurs/file-upload/file-upload.component';
+import { FileUploadComponent } from './featurs/file-upload/file-upload/file-upload.component';
 
 @Component({
   selector: 'app-root',
